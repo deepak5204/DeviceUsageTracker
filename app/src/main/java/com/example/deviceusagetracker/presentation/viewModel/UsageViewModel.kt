@@ -16,25 +16,34 @@ class UsageViewModel(
     val uiState: StateFlow<UsageUiState> = _uiState.asStateFlow()
 
     init {
-        loadUsageData()
+        loadTodayUsage()
     }
 
-    fun loadUsageData() {
+    fun loadTodayUsage() {
+
         viewModelScope.launch {
+
+            _uiState.value = _uiState.value.copy(
+                isLoading = true,
+                error = null
+            )
+
             try {
-                _uiState.value = _uiState.value.copy(isLoading = true)
 
-                val usage = repository.getTodayAppUsage()
+                val categoryUsage = repository.getTodayCategoryUsage()
+                val appUsage = repository.getTodayAppUsage()
 
-                _uiState.value = UsageUiState(
+                _uiState.value = _uiState.value.copy(
                     isLoading = false,
-                    usageList = usage
+                    usageList = appUsage,
+                    categoryList = categoryUsage
                 )
 
             } catch (e: Exception) {
-                _uiState.value = UsageUiState(
+
+                _uiState.value = _uiState.value.copy(
                     isLoading = false,
-                    error = e.message
+                    error = e.message ?: "Unknown error occurred"
                 )
             }
         }
