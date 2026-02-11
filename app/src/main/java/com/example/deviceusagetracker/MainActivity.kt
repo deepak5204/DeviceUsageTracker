@@ -16,12 +16,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.deviceusagetracker.data.manager.UsageStatsHelper
 import com.example.deviceusagetracker.presentation.permission.PermissionScreen
 import com.example.deviceusagetracker.ui.theme.DeviceUsageTrackerTheme
 import com.example.deviceusagetracker.utils.PermissionUtils
+import kotlin.math.log
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val helper = UsageStatsHelper(this)
+        helper.logUsageStats()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -33,7 +38,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 if (hasPermission) {
-                    Text("Permission Granted ✅ (Dashboard Placeholder)")
+                    Text("Permission Granted (Dashboard Placeholder)", modifier = Modifier.padding(24.dp))
                 } else {
                     PermissionScreen(
                         onPermissionGranted = {
@@ -56,6 +61,8 @@ class MainActivity : ComponentActivity() {
 //                    )
 //                }
 //            }
+
+
         }
     }
 }
