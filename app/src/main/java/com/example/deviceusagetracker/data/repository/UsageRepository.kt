@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import com.example.deviceusagetracker.data.manager.UsageStatsHelper
 import com.example.deviceusagetracker.data.mapper.AppCategoryMapper
 import com.example.deviceusagetracker.domain.model.AppUsage
+import com.example.deviceusagetracker.domain.model.CategoryUsage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -13,13 +14,35 @@ class UsageRepository(
     private val usageStatsHelper: UsageStatsHelper
 ) {
 
-    suspend fun getTodayAppUsage(): List<AppUsage> = withContext(Dispatchers.IO) {
+    suspend fun getTodayCategoryUsage(): List<CategoryUsage> =
+        withContext(Dispatchers.IO) {
+
+            val appUsageList = getTodayAppUsageInternal()
+
+            val grouped = appUsageList.groupBy { it.category }
+
+            grouped.map { (category, apps) ->
+
+                val totalMinutes = apps.sumOf { it.usageMinutes }
+
+                CategoryUsage(
+                    category = category,
+                    totalUsageMinutes = totalMinutes
+                )
+            }.sortedByDescending { it.totalUsageMinutes }
+        }
+
+    suspend fun getTodayAppUsage(): List<AppUsage> =
+        withContext(Dispatchers.IO) {
+            getTodayAppUsageInternal()
+        }
+
+    private fun getTodayAppUsageInternal(): List<AppUsage> {
 
         val packageManager = context.packageManager
-
         val statsList = usageStatsHelper.getUsageStats()
 
-        statsList.mapNotNull { stat ->
+        return statsList.mapNotNull { stat ->
 
             val usageMillis = stat.totalTimeInForeground
             if (usageMillis <= 0) return@mapNotNull null
@@ -36,8 +59,7 @@ class UsageRepository(
                 category = category,
                 usageMinutes = usageMillis / 1000 / 60
             )
-        }
-            .sortedByDescending { it.usageMinutes }
+        }.sortedByDescending { it.usageMinutes }
     }
 
     private fun getAppName(
