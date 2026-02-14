@@ -91,7 +91,6 @@ fun UsageList(
 fun UsageItem(
     usage: AppUsage
 ) {
-    Log.d("TAG", "UsageItem: $usage")
     if (usage.usageMinutes > 0) {
         Card(
             modifier = Modifier
@@ -109,7 +108,6 @@ fun UsageItem(
                             contentDescription = usage.appName,
                             modifier = Modifier
                                 .size(40.dp)
-                                .padding(top = 0.dp)
                         )
                     }
                     Spacer(modifier = Modifier.width(12.dp))
