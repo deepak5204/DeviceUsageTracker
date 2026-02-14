@@ -14,17 +14,20 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.deviceusagetracker.domain.model.AppUsage
+import com.example.deviceusagetracker.domain.model.CategoryUsage
+import com.example.deviceusagetracker.presentation.dashboard.components.CategoryUsageCard
 import com.example.deviceusagetracker.presentation.viewModel.UsageViewModel
 import com.example.deviceusagetracker.presentation.utils.toBitmap
 
 @Composable
 fun DashboardScreen(
-    viewModel: UsageViewModel
+    viewModel: UsageViewModel,
+    onViewDetails: (AppUsage) -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     when {
-        // Loading State
+        // Loading
         uiState.isLoading -> {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -34,7 +37,7 @@ fun DashboardScreen(
             }
         }
 
-        // Error State
+        // Error
         uiState.error != null -> {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -47,15 +50,14 @@ fun DashboardScreen(
             }
         }
 
-        // Success State
+        uiState.usageList.isEmpty() -> {
+            EmptyUsageScreen()
+        }
         else -> {
-
-            if (uiState.usageList.isEmpty()) {
-                EmptyUsageScreen()
-            } else {
-                UsageList(uiState.usageList)
-            }
-
+            UsageList(
+                list = uiState.usageList,
+                onViewDetails = onViewDetails
+            )
         }
     }
 }
@@ -75,14 +77,18 @@ fun EmptyUsageScreen() {
 
 @Composable
 fun UsageList(
-    list: List<AppUsage>
+    list: List<AppUsage>,
+    onViewDetails: (AppUsage) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(16.dp)
     ) {
         items(list) { usage ->
-            UsageItem(usage)
+            CategoryUsageCard(
+                usage = usage,
+                onViewDetails = { onViewDetails(usage) }
+            )
         }
     }
 }

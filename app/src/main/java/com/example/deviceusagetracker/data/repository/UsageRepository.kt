@@ -9,12 +9,19 @@ import com.example.deviceusagetracker.domain.model.AppUsage
 import com.example.deviceusagetracker.domain.model.CategoryUsage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.example.deviceusagetracker.domain.model.AppCategory
 
 class UsageRepository(
     private val context: Context,
     private val usageStatsHelper: UsageStatsHelper
 ) {
 
+    private val defaultLimits = mapOf(
+        AppCategory.SOCIAL_MEDIA to 120L,
+        AppCategory.ENTERTAINMENT to 180L,
+        AppCategory.EDUCATION to 240L,
+        AppCategory.OTHER to 300L
+    )
     suspend fun getTodayCategoryUsage(): List<CategoryUsage> =
         withContext(Dispatchers.IO) {
 
@@ -26,9 +33,19 @@ class UsageRepository(
 
                 val totalMinutes = apps.sumOf { it.usageMinutes }
 
+                val limit = defaultLimits[category] ?: 0L
+
+                val remaining = (limit - totalMinutes).coerceAtLeast(0)
+
+                val isReached = totalMinutes >= limit && limit > 0
+
+
                 CategoryUsage(
                     category = category,
-                    totalUsageMinutes = totalMinutes
+                    totalUsageMinutes = totalMinutes,
+                    limitMinutes = limit,
+                    remainingMinutes = remaining,
+                    isLimitReached = isReached
                 )
             }.sortedByDescending { it.totalUsageMinutes }
         }
