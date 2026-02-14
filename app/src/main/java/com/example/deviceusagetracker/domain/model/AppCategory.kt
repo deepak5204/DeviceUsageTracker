@@ -1,7 +1,7 @@
 package com.example.deviceusagetracker.domain.model
 
 enum class AppCategory {
-    SOCIAL,
+    SOCIAL_MEDIA,
     ENTERTAINMENT,
     EDUCATION,
     OTHER
