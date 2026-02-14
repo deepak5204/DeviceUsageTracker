@@ -2,6 +2,7 @@ package com.example.deviceusagetracker.data.repository
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.util.Log
 import com.example.deviceusagetracker.data.manager.UsageStatsHelper
 import com.example.deviceusagetracker.data.mapper.AppCategoryMapper
 import com.example.deviceusagetracker.domain.model.AppUsage
@@ -42,7 +43,10 @@ class UsageRepository(
         val packageManager = context.packageManager
         val statsList = usageStatsHelper.getUsageStats()
 
+        Log.d("TAG", "getTodayAppUsageInternal: $statsList")
+
         return statsList.mapNotNull { stat ->
+
 
             val usageMillis = stat.totalTimeInForeground
             if (usageMillis <= 0) return@mapNotNull null
@@ -53,7 +57,10 @@ class UsageRepository(
 
             val category = AppCategoryMapper.getCategory(packageName)
 
+            val icon = getAppIcon(packageManager, packageName)
+
             AppUsage(
+                icon = icon,
                 packageName = packageName,
                 appName = appName,
                 category = category,
@@ -73,4 +80,15 @@ class UsageRepository(
             packageName
         }
     }
+
+    private fun getAppIcon(
+        packageManager: PackageManager,
+        packageName: String
+    ) = try {
+        val appInfo = packageManager.getApplicationInfo(packageName, 0)
+        packageManager.getApplicationIcon(appInfo)
+    } catch (e: Exception) {
+        null
+    }
+
 }

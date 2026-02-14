@@ -10,7 +10,8 @@ object AppCategoryMapper {
             // Social
             "com.instagram.android",
             "com.facebook.katana",
-            "com.snapchat.android" -> AppCategory.SOCIAL
+            "com.whatsapp",
+            "com.snapchat.android" -> AppCategory.SOCIAL_MEDIA
 
             // Entertainment
             "com.google.android.youtube",
@@ -19,7 +20,8 @@ object AppCategoryMapper {
 
             // Education
             "com.google.android.apps.classroom",
-            "org.khanacademy.android" -> AppCategory.EDUCATION
+            "org.khanacademy.android",
+            "com.github.android" -> AppCategory.EDUCATION
 
             else -> AppCategory.OTHER
         }
