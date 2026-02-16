@@ -19,7 +19,7 @@ data class AppUsage(
     val status: UsageStatus
         get() = when {
             usageMinutes >= limitMinutes -> UsageStatus.LIMIT_REACHED
-            usageMinutes >= limitMinutes * 0.8 -> UsageStatus.WARNING
+            usageMinutes >= limitMinutes * 0.6 -> UsageStatus.WARNING
             else -> UsageStatus.SAFE
         }
 }
