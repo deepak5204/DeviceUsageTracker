@@ -1,6 +1,5 @@
 # 📱 Device Usage Tracker
 
-![App Preview](screenshots/preview_image.png)
 ## Project Overview
 
 Device Usage Tracker is an Android application that monitors device app usage and displays usage
