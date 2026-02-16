@@ -1,4 +1,19 @@
 # 📱 Device Usage Tracker
+![Kotlin](https://img.shields.io/badge/Kotlin-1.9-blue)
+![Jetpack Compose](https://img.shields.io/badge/UI-Jetpack%20Compose-green)
+![Architecture](https://img.shields.io/badge/Architecture-MVVM-orange)
+![Coroutines](https://img.shields.io/badge/Async-Coroutines-purple)
+![Min SDK](https://img.shields.io/badge/Min%20SDK-26-red)
+
+
+ ## look
+<p>
+  <img src="https://img.shields.io/badge/Kotlin-1.9-blue"/>
+  <img src="https://img.shields.io/badge/UI-Jetpack%20Compose-green"/>
+  <img src="https://img.shields.io/badge/Architecture-MVVM-orange"/>
+  <img src="https://img.shields.io/badge/Async-Coroutines-purple"/>
+  <img src="https://img.shields.io/badge/Min%20SDK-26-red"/>
+</p>
 
 ## Project Overview
 
@@ -15,7 +30,7 @@ screen-time limits and enforcement mechanisms will be added incrementally.
   <img src="screenshots/preview_image.png" width="900" alt=""/>
 </p>
 
-### 📊 Dashboard
+###  Dashboard
 <p align="center">
   <img src="screenshots/dashboard_screen.png" width="300"/>
 </p>
@@ -62,7 +77,7 @@ Currently dashboard shows:
 ✔ Usage Progress Bar
 
 
-### UI Implementation
+### 🎨 UI Implementation
 -   Built using Jetpack Compose
 -   Material 3 design
 -   Clean card-based dashboard layout
@@ -148,18 +163,49 @@ Separates UI, business logic, and data sources.
 -   Android 8.0 (API 26) or above
 -   Usage Access Permission enabled
 
-##  How To Run
-1️⃣ Clone project
-2️⃣ Open in Android Studio
-3️⃣ Run on physical device
-4️⃣ Grant Usage Access permission
-5️⃣ Use apps → Check dashboard usage
+#  How To Run
+##  Getting Started
+
+### Prerequisites
+- Android Studio Hedgehog or above
+- Physical Android Device (Usage Stats may not work properly on emulator)
+- Android 8.0+ (API 26)
+
+### Setup Steps
+1. Clone the repository
+2. Open project in Android Studio
+3. Sync Gradle
+4. Run on physical device
+5. Grant Usage Access Permission when prompted
 
 
-#   Current Status
--   🟢 Permission Flow → Completed
--   🟢 Usage Tracking → Completed
--   🟢 Dashboard UI → Completed
--   🟡 Limit Policy → In Progress
--   🔴 Enforcement Service → Planned
--   🔴 Ads Integration → Planned
+
+
+## 🎯 Why This Project?
+
+This project was built to deeply understand Android system-level APIs like UsageStatsManager,
+foreground services, and permission flows.
+
+It simulates real-world Digital Wellbeing / Parental Control scenarios such as:
+- Screen time monitoring
+- Usage limit enforcement
+- Background monitoring services
+- Real-time blocking triggers (planned)
+
+
+## 🛣 Future Roadmap
+
+### Phase 1 — Core Tracking 
+- Usage stats tracking
+- Dashboard UI
+- Permission flow
+
+### Phase 2 — Limit Engine (In Progress)
+- Category based limits
+- App based limits
+- Daily reset logic
+
+### Phase 3 — Enforcement Engine (Planned)
+- Foreground monitoring service
+- Limit breach notifications
+- Blocking overlay screen
