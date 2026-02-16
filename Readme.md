@@ -4,7 +4,7 @@
 
 Device Usage Tracker is an Android application that monitors device app usage and displays usage
 insights in a clean dashboard UI.
-<br>
+
 The app is designed as a foundation for a Parental Control / Digital Wellbeing system, where
 screen-time limits and enforcement mechanisms will be added incrementally.
 
