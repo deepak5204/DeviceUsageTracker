@@ -24,6 +24,11 @@ fun DashboardScreen(
     viewModel: UsageViewModel,
     onViewDetails: (AppUsage) -> Unit = {}
 ) {
+
+    LaunchedEffect(Unit) {
+        viewModel.loadTodayUsage()
+    }
+
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     when {
