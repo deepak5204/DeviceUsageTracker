@@ -1,5 +1,6 @@
 # 📱 Device Usage Tracker
 
+![App Preview](screenshots/preview_image.png)
 ## Project Overview
 
 Device Usage Tracker is an Android application that monitors device app usage and displays usage
@@ -7,6 +8,36 @@ insights in a clean dashboard UI.
 
 The app is designed as a foundation for a Parental Control / Digital Wellbeing system, where
 screen-time limits and enforcement mechanisms will be added incrementally.
+
+
+## 📸 App Screenshots
+
+<p align="center">
+  <img src="screenshots/preview_image.png" width="900" alt=""/>
+</p>
+
+### 📊 Dashboard
+<p align="center">
+  <img src="screenshots/dashboard_screen.png" width="300"/>
+</p>
+
+### 🔐 Permission Flow
+<p align="center">
+  <img src="screenshots/permission_screen_1.png" width="280"/>
+  <img src="screenshots/permission_screen_2.png" width="280"/>
+</p>
+
+### 📱 Usage Access Screens
+<p align="center">
+  <img src="screenshots/usage_access_screen.png" width="250"/>
+  <img src="screenshots/usage_access_screen_2.png" width="250"/>
+  <img src="screenshots/usage_access_screen_3.png" width="250"/>
+</p>
+
+<p align="center">
+  <img src="screenshots/usage_access_screen_loading.png" width="250"/>
+</p>
+
 
 ##  Current Implemented Features
 ### Permission Flow (On Launch)
