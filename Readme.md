@@ -124,14 +124,9 @@ Separates UI, business logic, and data sources.
 
 
 #   Current Status
-🟢 Permission Flow → Completed 
-<br>
-🟢 Usage Tracking → Completed
-<br>
-🟢 Dashboard UI → Completed
-<br>
-🟡 Limit Policy → In Progress
-<br>
-🔴 Enforcement Service → Planned
-<br>
-🔴 Ads Integration → Planned
+-   🟢 Permission Flow → Completed
+-   🟢 Usage Tracking → Completed
+-   🟢 Dashboard UI → Completed
+-   🟡 Limit Policy → In Progress
+-   🔴 Enforcement Service → Planned
+-   🔴 Ads Integration → Planned
