@@ -27,15 +27,18 @@ screen-time limits and enforcement mechanisms will be added incrementally.
 </p>
 
 ### 📱 Usage Access Screens
+
+<p align="center">
+  <img src="screenshots/usage_access_screen_loading.png" width="250"/>
+</p>
+
 <p align="center">
   <img src="screenshots/usage_access_screen.png" width="250"/>
   <img src="screenshots/usage_access_screen_2.png" width="250"/>
   <img src="screenshots/usage_access_screen_3.png" width="250"/>
 </p>
 
-<p align="center">
-  <img src="screenshots/usage_access_screen_loading.png" width="250"/>
-</p>
+
 
 
 ##  Current Implemented Features
