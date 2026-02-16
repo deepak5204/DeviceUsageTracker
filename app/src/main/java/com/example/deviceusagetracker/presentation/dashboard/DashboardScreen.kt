@@ -94,6 +94,7 @@ fun UsageList(
                 usage = usage,
                 onViewDetails = { onViewDetails(usage) }
             )
+            Spacer(Modifier.height(12.dp))
         }
     }
 }

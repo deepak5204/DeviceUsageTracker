@@ -43,7 +43,6 @@ class MainActivity : ComponentActivity() {
         val helper = UsageStatsHelper(this)
         helper.logUsageStats()
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
 
             DeviceUsageTrackerTheme {
