@@ -6,15 +6,6 @@
 ![Min SDK](https://img.shields.io/badge/Min%20SDK-26-red)
 
 
- ## look
-<p>
-  <img src="https://img.shields.io/badge/Kotlin-1.9-blue"/>
-  <img src="https://img.shields.io/badge/UI-Jetpack%20Compose-green"/>
-  <img src="https://img.shields.io/badge/Architecture-MVVM-orange"/>
-  <img src="https://img.shields.io/badge/Async-Coroutines-purple"/>
-  <img src="https://img.shields.io/badge/Min%20SDK-26-red"/>
-</p>
-
 ## Project Overview
 
 Device Usage Tracker is an Android application that monitors device app usage and displays usage
