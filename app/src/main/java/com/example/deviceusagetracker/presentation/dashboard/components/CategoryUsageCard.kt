@@ -132,9 +132,17 @@ fun StatusBadge(status: UsageStatus, modifier: Modifier) {
 fun getUsageBrush(progress: Float): Brush {
 
     return when {
-        progress <= 0.5f -> {
+        progress <= 0.4f -> {
             Brush.horizontalGradient(
                 listOf(Color(0xFF4CAF50), Color(0xFF4CAF50)) // Green
+            )
+        }
+        progress <= 0.6f -> {
+            Brush.horizontalGradient(
+                listOf(
+                    Color(0xFF4CAF50), // Green
+                    Color(0xFFFFC107),   // Yellow
+                )
             )
         }
 
@@ -151,6 +159,7 @@ fun getUsageBrush(progress: Float): Brush {
         else -> {
             Brush.horizontalGradient(
                 listOf(
+                    Color(0xFF4CAF50),   // Green
                     Color(0xFFFFC107),   // Yellow
                     Color(0xFFFF9800),   // Orange
                     Color(0xFFF44336)    // Red
